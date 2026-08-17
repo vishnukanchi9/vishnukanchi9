@@ -49,7 +49,7 @@ Real-time collaborative task workspace with a browser-first Kanban interface.
 
 ## Background
 
-- M.S. in Computer Science, Stevens Institute of Technology - GPA 3.83/4.0
+- M.S. in Computer Science, Stevens Institute of Technology
 - Google Associate Cloud Engineer certified
 - Previously supported production systems across Compute Engine, GKE, Cloud Storage, and IAM at Infosys
 
