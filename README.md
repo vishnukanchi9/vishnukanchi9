@@ -1,60 +1,56 @@
-## Vishnu Kanchi
+# Vishnu Kanchi
 
-Cloud and reliability engineer. Google Cloud certified, M.S. in Computer Science from
-Stevens Institute of Technology. Spent two years on the front line of production GCP
-incidents at Infosys — Compute Engine, GKE, Cloud Storage, networking, IAM — and now
-build the infrastructure and backend side of that work.
+Software engineer focused on backend services, distributed systems, and reliable software delivery. I build production-minded applications in Java and Python, with hands-on experience in transactional data, asynchronous job processing, real-time collaboration, Docker, and CI/CD.
 
-I care about systems whose correctness is *demonstrable*. Every repository below proves
-its own central claim in CI on each push, rather than asserting it in a README.
+My background in production GCP incident response shapes how I build: correctness, failure handling, observability, and automated verification are part of the implementation rather than an afterthought.
 
----
+## Featured software projects
 
-### Projects
+### [Pulse Queue](https://github.com/vishnukanchi9/pulse-queue)
 
-**[k8s-slo-platform](https://github.com/vishnukanchi9/k8s-slo-platform)** — A Kubernetes
-service platform that attacks itself on every push. CI builds a real three-node cluster,
-deploys, then verifies that a rolling restart under live traffic drops **zero** requests,
-that an unready pod leaves the load balancer **without being restarted**, that the HPA
-actually scales under CPU load, and that a deliberately burned error budget fires a
-multi-window burn-rate alert and clears when the fault is removed.
-`Kubernetes · Prometheus · Grafana · Alertmanager · kind · FastAPI`
+Distributed task queue with durable job state, retries, and dead-letter handling.
 
-**[ledger-service](https://github.com/vishnukanchi9/ledger-service)** — A double-entry
-ledger API where the hard part is correctness under concurrency. Money is never created
-or destroyed across 120 parallel transfers, thirty simultaneous withdrawals against ten
-withdrawals' worth of balance yield exactly ten successes, and eight concurrent requests
-sharing an idempotency key post exactly once. Guarantees rest on database constraints and
-row locks taken in sorted order, not on application checks.
-`FastAPI · PostgreSQL · SQLAlchemy · Alembic · pytest`
+- Separate Spring Boot API and worker containers with PostgreSQL as the source of truth.
+- Redis ready, retry, and dead-letter queues; exponential backoff capped at five minutes.
+- Browser monitoring dashboard plus GitHub Actions that test and build the production image on every push.
 
-**[gcp-landing-zone](https://github.com/vishnukanchi9/gcp-landing-zone)** — Multi-environment
-GCP foundation in Terraform, delivered by a pipeline that authenticates through Workload
-Identity Federation with **no service account keys anywhere**. Private subnets with Cloud NAT
-egress, IAP-only SSH, deny-by-default firewall logging, least-privilege service accounts, and
-isolated remote state per environment. Every change gated behind a plan, a Checkov scan, and
-review.
-`Terraform · GCP · GitHub Actions · Workload Identity Federation`
+`Java` `Spring Boot` `PostgreSQL` `Redis` `Docker` `Flyway`
 
-**[weather-etl-pipeline](https://github.com/vishnukanchi9/weather-etl-pipeline)** — An
-idempotent ETL pipeline loading API data into a star-schema warehouse on BigQuery and SQLite,
-with MD5 surrogate keys, delete-then-insert loads that hold row counts constant across re-runs,
-and data quality gates between transform and load.
-`Python · BigQuery · SQLite · GitHub Actions`
+### [Ledger Service](https://github.com/vishnukanchi9/ledger-service)
 
----
+Double-entry ledger API designed for correctness under concurrency.
 
-### Working with
+- Idempotent transfers, deadlock-free row locking, immutable entries, and database-enforced no-overdraft protection.
+- CI proves money conservation across 120 concurrent transfers and ensures repeated concurrent requests post once.
 
-**Cloud** · GCP (Compute Engine, GKE, VPC, Cloud NAT, IAM, IAP, BigQuery), AWS
-**Infrastructure as code** · Terraform, Kustomize, Checkov
-**Containers & orchestration** · Docker, Kubernetes
-**Reliability** · SLIs/SLOs, error budgets, burn-rate alerting, postmortems, runbooks
-**Backend** · Python, FastAPI, SQLAlchemy, PostgreSQL, pytest
-**CI/CD** · GitHub Actions
+`Python` `FastAPI` `PostgreSQL` `SQLAlchemy` `Alembic` `pytest`
 
-**Certified** · Google Cloud Associate Cloud Engineer
+### [TeamBoard](https://github.com/vishnukanchi9/teamboard)
 
----
+Real-time collaborative task workspace with a browser-first Kanban interface.
 
-[LinkedIn](https://linkedin.com/in/vishnukanchi)
+- Drag-and-drop task workflows, filtering, comments, member management, profile editing, and activity history.
+- FastAPI WebSocket updates keep connected clients current; Docker packaging and GitHub Actions verify the app automatically.
+
+`Python` `FastAPI` `WebSockets` `SQLite` `Docker` `pytest`
+
+## Additional systems work
+
+- [Kubernetes SLO Platform](https://github.com/vishnukanchi9/k8s-slo-platform) - Kubernetes reliability properties verified in CI through live traffic, failure injection, rolling updates, HPA scaling, and burn-rate alerts.
+- [GCP Landing Zone](https://github.com/vishnukanchi9/gcp-landing-zone) - Multi-environment Terraform foundation delivered through keyless GitHub Actions with Workload Identity Federation.
+- [Weather ETL Pipeline](https://github.com/vishnukanchi9/weather-etl-pipeline) - Idempotent Python ETL pipeline with BigQuery/SQLite warehousing and data-quality gates.
+
+## Technologies
+
+- **Languages:** Java, Python, JavaScript, SQL, Bash
+- **Backend:** Spring Boot, FastAPI, REST APIs, WebSockets, SQLAlchemy
+- **Data:** PostgreSQL, Redis, SQLite, BigQuery; transactions, schema design, Flyway, Alembic
+- **Cloud & delivery:** Docker, Kubernetes, GCP, AWS, Terraform, GitHub Actions, Prometheus, Grafana
+
+## Background
+
+- M.S. in Computer Science, Stevens Institute of Technology - GPA 3.83/4.0
+- Google Associate Cloud Engineer certified
+- Previously supported production systems across Compute Engine, GKE, Cloud Storage, and IAM at Infosys
+
+[LinkedIn](https://linkedin.com/in/vishnukanchi) · [GitHub](https://github.com/vishnukanchi9)
