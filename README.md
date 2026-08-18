@@ -1,6 +1,6 @@
 # Vishnu Kanchi
 
-Software engineer focused on backend services, distributed systems, and reliable software delivery. I build production-minded applications in Java and Python, with hands-on experience in transactional data, asynchronous job processing, real-time collaboration, Docker, and CI/CD.
+Software engineer focused on backend services, distributed systems, and reliable software delivery. I build production-minded applications in Java, Python, and TypeScript, with hands-on experience in transactional data, asynchronous job processing, live service consoles, Docker, and CI/CD.
 
 My background in production GCP incident response shapes how I build: correctness, failure handling, observability, and automated verification are part of the implementation rather than an afterthought.
 
@@ -25,24 +25,35 @@ Double-entry ledger API designed for correctness under concurrency.
 
 `Python` `FastAPI` `PostgreSQL` `SQLAlchemy` `Alembic` `pytest`
 
-### [TeamBoard](https://github.com/vishnukanchi9/teamboard)
+### [Sentinel](https://github.com/vishnukanchi9/sentinel)
 
-Real-time collaborative task workspace with a browser-first Kanban interface.
+Live incident command console — service health, SEV-ranked incidents, and an append-only timeline.
 
-- Drag-and-drop task workflows, filtering, comments, member management, profile editing, and activity history.
-- FastAPI WebSocket updates keep connected clients current; Docker packaging and GitHub Actions verify the app automatically.
+- FastAPI + WebSockets; PostgreSQL in Docker Compose, ephemeral SQLite for the test suite.
+- Service health is derived from open incidents. Acknowledge / assign / resolve are closed transitions; resolve is terminal.
+- Notify-then-refetch board updates so connected consoles cannot desynchronise.
 
-`Python` `FastAPI` `WebSockets` `SQLite` `Docker` `pytest`
+`Python` `FastAPI` `WebSockets` `PostgreSQL` `Docker` `pytest`
+
+### [KANCHI](https://github.com/vishnukanchi9/kanchi)
+
+Engineering portfolio with a print-ready resume and live labs for Pulse, Ledger, and Sentinel.
+
+- React / TypeScript / TanStack Start. The labs implement the same contracts as the standalone services.
+- Postgres-backed, guest-safe demos with optional sign-in for isolated workspaces.
+
+`TypeScript` `React` `TanStack Start` `PostgreSQL`
 
 ## Additional systems work
 
 - [Kubernetes SLO Platform](https://github.com/vishnukanchi9/k8s-slo-platform) - Kubernetes reliability properties verified in CI through live traffic, failure injection, rolling updates, HPA scaling, and burn-rate alerts.
 - [GCP Landing Zone](https://github.com/vishnukanchi9/gcp-landing-zone) - Multi-environment Terraform foundation delivered through keyless GitHub Actions with Workload Identity Federation.
 - [Weather ETL Pipeline](https://github.com/vishnukanchi9/weather-etl-pipeline) - Idempotent Python ETL pipeline with BigQuery/SQLite warehousing and data-quality gates.
+- [TeamBoard](https://github.com/vishnukanchi9/teamboard) - Real-time collaborative Kanban board in FastAPI with WebSocket broadcast and Docker packaging.
 
 ## Technologies
 
-- **Languages:** Java, Python, JavaScript, SQL, Bash
+- **Languages:** Java, Python, TypeScript, SQL, Bash
 - **Backend:** Spring Boot, FastAPI, REST APIs, WebSockets, SQLAlchemy
 - **Data:** PostgreSQL, Redis, SQLite, BigQuery; transactions, schema design, Flyway, Alembic
 - **Cloud & delivery:** Docker, Kubernetes, GCP, AWS, Terraform, GitHub Actions, Prometheus, Grafana
