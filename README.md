@@ -16,14 +16,15 @@ Distributed task queue with durable job state, retries, and dead-letter handling
 
 `Java` `Spring Boot` `PostgreSQL` `Redis` `Docker` `Flyway`
 
-### [Ledger Service](https://github.com/vishnukanchi9/ledger-service)
+### [Ledger Service](https://github.com/vishnukanchi9/ledger-service) · [Java implementation](https://github.com/vishnukanchi9/ledger-service-java)
 
-Double-entry ledger API designed for correctness under concurrency.
+Double-entry ledger API designed for correctness under concurrency — built twice, in Python and Java, against one specification.
 
 - Idempotent transfers, deadlock-free row locking, immutable entries, and database-enforced no-overdraft protection.
 - CI proves money conservation across 120 concurrent transfers and ensures repeated concurrent requests post once.
+- The Java build carries the same guarantees through `@Lock(PESSIMISTIC_WRITE)` and Testcontainers. Recovering from a duplicate-key race takes two Spring beans, because a self-invoked `@Transactional` call bypasses the proxy and never opens the new transaction.
 
-`Python` `FastAPI` `PostgreSQL` `SQLAlchemy` `Alembic` `pytest`
+`Python` `FastAPI` `SQLAlchemy` `Alembic` · `Java` `Spring Boot` `JPA` `Flyway` · `PostgreSQL` `pytest` `JUnit 5` `Testcontainers`
 
 ### [Sentinel](https://github.com/vishnukanchi9/sentinel)
 
@@ -54,6 +55,7 @@ Engineering portfolio with a print-ready resume and live labs for Pulse, Ledger,
 ## Technologies
 
 - **Languages:** Java, Python, TypeScript, SQL, Bash
+- **Testing:** JUnit 5, Testcontainers, pytest; integration and concurrency testing
 - **Backend:** Spring Boot, FastAPI, REST APIs, WebSockets, SQLAlchemy
 - **Data:** PostgreSQL, Redis, SQLite, BigQuery; transactions, schema design, Flyway, Alembic
 - **Cloud & delivery:** Docker, Kubernetes, GCP, AWS, Terraform, GitHub Actions, Prometheus, Grafana
